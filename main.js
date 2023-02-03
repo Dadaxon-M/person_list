@@ -30,3 +30,14 @@ let p3 = {}
 Object.assign(p3,p1) //obyektdan nusxa olish
 p3.age = 55
 console.log(p3);
+// //employed
+// fish:
+// adress:{
+//     country:,
+//     region:,
+//     city
+// }
+// lavozim:
+
+// //talabalar
+// //cars
