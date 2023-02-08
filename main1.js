@@ -1,144 +1,67 @@
-// function adress(davlat, viloyat, shahar) {
-//     const adress = Object.create({}, {
-//         davlat: {
-//             value: davlat,
-//             enumerator: true,   //ko'rsatish imkoni
-//             writable: true,      //o'zgartirish imkoni
-//             configurable: true
-//         },
-//         viloyat: {
-//             value: viloyat,
-//             enumerator: true,
-//             writable: true,
-//             configurable: true
-//         },
-//         shahar: {
-//             value: shahar,
-//             enumerator: true,
-//             writable: true,
-//             configurable: true
-//         }
+class Person {
+  constructor(firstname, lastname, age, jinsi) {
+    this.ismi = firstname;
+    this.familiya = lastname;
+    this.yosh = age;
+    this.jinsi = jinsi;
+  }
+}
 
-//     });
-//     return adress;
+class Doctor extends Person {
+  constructor(firstname, lastname, age, jinsi, mutahasislik, adress) {
+    super(firstname, lastname, age, jinsi);
+    this.mutahasislik = mutahasislik;
+    this.adress = adress;
+  }
+}
 
+class Adress{
+    constructor(city,destrict,adressline1){
+        this.city = city;
+        this.destrict = destrict;
+        this.adressline1 = adressline1
+    }
+}
+
+// const Vrach0 = new Doctor("Dilshod","Turdiyev",18,"o'g'il","jarroh",new Adress("Tashkent","Chilonzor","122-uy"));
+
+let list1 = [];
+// for (let index = 0; index < 20; index++) {
+//     let age = Math.random()*(100-10)+10
+//     let age1 = Math.floor(age)
+//     list1.push(new Doctor(`Dilshod ${index}`,`Turdiyev ${index}`,`${age1}`,"o'g'il","jarroh",new Adress("Tashkent","Chilonzor","122-uy")))
 // }
-// function Person(ismi, familiyasi, manzil = adress()) {
-//     this.ismi = ismi;
-//     this.familiyasi = familiyasi;
-//     this.manzil = manzil
-// }
-// const person = new Person("G'anijon2", "Sattorov2",adress("uzb","tosh","mirzo") )
-// console.log(person);
-// console.log(person.manzil.shahar);
+// console.log(list1);
+// const filter_list1 = list1.filter(i => i.yosh <70);
+// console.log(filter_list1);
 
-// class yaratamiz
-// class Person {
-//   constructor(firstname, lastname, age, jinsi) {
-//     this.ismi = firstname;
-//     this.familiya = lastname;
-//     this.yosh = age;
-//     this.jinsi = jinsi;
-//   }
-// }
+// console.log(typeof list1);
+// console.log(typeof JSON.stringify(list1));
+// localStorage.setItem("person",JSON.stringify(list1)) //--yuklash
 
-// class Doctor extends Person {
-//   constructor(firstname, lastname, age, jinsi, mutahasislik, adress) {
-//     super(firstname, lastname, age, jinsi);
-//     this.mutahasislik = mutahasislik;
-//     this.adress = adress;
-//   }
-// }
-// const Vrach = new Doctor("Islom","Turdiyev",18,"o'g'il","jarroh","mirzo ulugbek");
+const list1_str = localStorage.getItem("person") //yuklab olish
+if (list1_str!=null){
+    const json = JSON.parse(list1_str)
+    list1 = [...json]
+}
 
-// class Mashina{
-//     constructor(nomi,modeli,rang,narhi,ot_kuchi,yoqilgi_sarfi){
-//         this.nomi = nomi;
-//         this.modeli = modeli;
-//         this.rang = rang;
-//         this.narhi = narhi;
-//         this.ot_kuchi = ot_kuchi;
-//         this.yoqilgi_sarfi = yoqilgi_sarfi
-//     }
-// }
-// const nexia = new Mashina("Nexia","chevrolet","oq","15000$",105,10)
-// const nexia = new Mashina()
-// console.log(nexia);
+console.log(list1);
+const list2 = list1.filter(i => i.yosh <30)
+console.log(list2);
+
+const[person1,person2,...qolganPersonlar] = [...list2]
+
+console.log(...qolganPersonlar);
 
 
 
-// {key:value}       {  }  //-- lugat, obyekt
-// [manzil,kochcha]    [ 1,2,3]  // --ro'yhat
 
-// const mevalar = ["anjir","olma","banan","behi"]
-// mevalar.unshift("qulupnay")
-// mevalar.push("uzum")
-// mevalar.shift()
-// mevalar.pop()
-// mevalar[mevalar.length] = "anjir"
-// mevalar[100] = "kivi"
-// console.log(mevalar.length);
-// console.log(mevalar);
-// console.log(mevalar);
-
-// const persons = [
-// {
-//     firstname:"sattor",
-//     age:45,
-//     fdsfd:"dfdfdf",
-//     jinsi:"erkak",
-//     adress:{
-//         mamlakat:"O'znekiston",
-//         viloyat:"toshkent",
-//         shahar:"mirzoulug"
-//     }
-// },
-// {
-//     firstname:"Gani",
-//     age:55,
-//     fdsfd:"dfdfdf",
-//     jinsi:"erkak",
-//     adress:{
-//         mamlakat:"O'znekiston",
-//         viloyat:"toshkent",
-//         shahar:"mirzoulug"
-//     }
-// },
-// {
-//     firstname:"farsi",
-//     age:55,
-//     fdsfd:"dfdfdf",
-//     jinsi:"erkak",
-//     adress:{
-//         mamlakat:"O'znekiston",
-//         viloyat:"toshkent",
-//         shahar:"mirzoulug"
-//     }
-// }
-// ]
-
-// console.log(persons[0].firstname);
+// console.log(list1_str);
+// // console.log(typeof list1_str);
+// let person = [...list1_str]
+// list1.push(person)
+// console.log(list1);
+// const list2 = list1.filter(i => i.yosh < 70);
+// console.log(list2);
 
 
-// const myGirls = ["Cecilie", "Lone"];
-// const myBoys = ["Emil", "Tobias", "Linus"];
-
-// const myChildren = myGirls.concat(myBoys);
-// console.log(myChildren);
-
-// const arr1 = ["Emil", "Tobias", "Linus"];
-// const myChildren = arr1.concat("Peter"); 
-// console.log(myChildren);
-// const fruits = ["Banana", "Orange", "Apple", "Mango"];
-// console.log(fruits);
-// fruits.splice(0, 3);
-// console.log(fruits.length);
-// const fruits = ["Banana", "Orange", "Apple", "Mango"];
-// console.log(fruits);
-// fruits.splice(3,0, "Lemon", "Kiwi");
-// console.log(fruits);
-
-
-const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-const citrus = fruits.slice(3);
-console.log(citrus);
